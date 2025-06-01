@@ -71,7 +71,7 @@ typedef struct protothread_s {
 // This can be called on one thread by another to immediately set control to the terminate handler, if it exists.
 #define protothread_terminate(T)        do { (T)->pcntl.line = -PTEXEC_TERMINATE; if((T) == this_pt) return PTEXEC_TERMINATE; } while(0)
 
-// This can
+// This can be called on one thread by another to set control to the killed state.
 #define protothread_kill(T)             do { (T)->pcntl.line = -PTEXEC_KILLED; } while(0)
 
 #define protothread_terminate_handler   case -PTEXEC_TERMINATE: if(this_pt->pcntl.line == -PTEXEC_TERMINATE)
